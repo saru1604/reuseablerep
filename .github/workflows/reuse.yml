@@ -1,5 +1,4 @@
-name: Reusable Workflow user
-
+name: Reuse
 on:
   workflow_dispatch:
 
