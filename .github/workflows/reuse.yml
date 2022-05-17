@@ -12,7 +12,7 @@ jobs:
       - name: Run a one-line script
         run: echo Hello, world!
 
-  docker:
+  jobs:
     uses: saru1604/reuseablerepo/.github/workflows/compliance.yml@main
     with:
       image_name: my-awesome-app
