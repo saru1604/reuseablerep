@@ -1,16 +1,23 @@
-name: Build application
+name: Reusable Workflow user
 
 on:
-  push:
-    branches:
-    - main
+  workflow_dispatch:
 
 jobs:
-  build-ubuntu:
-    name: Build app on Ubuntu
+  do-it:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Run a one-line script
+        run: echo Hello, world!
+
+  docker:
     uses: saru1604/reuseablerepo/.github/workflows/compliance.yml@main
     with:
-      runs-on: ubuntu-latest
-      run-tests: false
-      project-folder: src
-      artifact-name: drop-ubuntu
+      image_name: my-awesome-app
+      tag: $GITHUB_RUN_NUMBER
+    secrets:
+      registry_username: ${{secrets.REGISTRY_USERNAME}}
+      registry_password: ${{secrets.REGISTRY_PASSWORD}}
