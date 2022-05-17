@@ -13,7 +13,7 @@ jobs:
         run: echo Hello, world!
 
   jobs:
-    uses: saru1604/reuseablerepo/.github/workflows/compliance.yml@main
+    uses: saru1604/reuseablerepo/.github/workflows/reuseablecall.yml@main
     with:
       image_name: my-awesome-app
       tag: $GITHUB_RUN_NUMBER
