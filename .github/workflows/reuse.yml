@@ -1,15 +1,13 @@
-name: "Compliance"
+name: Call a reusable workflow and use its outputs
 
 on:
-  pull_request_target:
-    types:
-      - opened
-      - edited
-      - synchronize
-
-permissions:
-  pull-requests: write
+  workflow_dispatch:
 
 jobs:
-  compliance:
+  job1:
     uses: saru1604/reuseablerepo/.github/workflows/compliance.yml@main
+  job2:
+    runs-on: ubuntu-latest
+    needs: job1
+    steps:
+      - run: echo ${{ needs.job1.outputs.firstword }} ${{ needs.job1.outputs.secondword }}
